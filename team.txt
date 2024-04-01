@@ -1,0 +1,39 @@
+Team Members:
+Mason Eiland – Team Representative
+Matthew Montoya
+
+
+Tasks:
+	Stage 2:
+
+	Both of us will discuss project type, motivation, description,
+	what techniques can be used, and research if any related work 
+	has been done on the subject.
+
+	Mason - Motivation, problem definition, related works
+	Matthew - ML techniques, related works
+
+
+
+	Stage 3:
+
+	Both of us looked for datasets that can be used for this project,
+	we added a section for each dataset we found that we though would 
+	be useful including a description, what it includes, and how it might 
+	be used.
+	
+	Mason - Brain Tumor Image dataset
+	Matthew - Cancer Imaging Archive data
+
+
+	Stage 4:
+
+	Both of us read the chapter on convolutional neural networks from the book.
+	We both created a program that matches the annotations containing the information
+	on bbox values with their corresponding images for each dataset (train, valid, test).
+	We then created a convolutional neural net with a hidden layer to make predictions about
+	whether a pixel is tumor or nontumor. Next we created a plot that shows the average loss
+	calculated for the training and validation set after each epoch.
+
+	Mason - display image functions, duplicate original dataset so we dont overwrite the orginal, training function, image transformation, train and 	valid_step functions
+	Matthew - mask creation function, hidden layer helper function, model creation, plot loss function

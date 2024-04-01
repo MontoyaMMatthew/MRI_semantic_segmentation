@@ -66,7 +66,7 @@ def display_image_with_annotations(ax, image, annotations, display_type = 'both'
                 polygon = patches.Polygon(poly, closed=True, edgecolor=color, fill=False)
                 ax.add_patch(polygon)
 """
-    create a plot to display images with bbox annotations
+    create a plot to display images with coco annotations
 
 """
 def display_images_with_coco_annotations(image_paths, annotations, display_type='both', colors=None):
