@@ -500,8 +500,8 @@ def loss_and_metric_plot(results:dict):
 
 def main():
     
-    with open('dataset/valid/_annotations.coco.json', 'r') as file:
-        data = json.load(file)
+    #with open('dataset/valid/_annotations.coco.json', 'r') as file:
+    #    data = json.load(file)
 
     """
 
@@ -509,56 +509,56 @@ def main():
 
     """
 
-    # with open('dataset/valid/_annotations.coco.json', 'r') as file:
-    #     annotations = json.load(file)
+    with open('dataset/valid/_annotations.coco.json', 'r') as file:
+        annotations = json.load(file)
 
 
-    # image_dir = 'dataset/valid'
+    image_dir = 'dataset/valid'
 
-    # all_image_files = [os.path.join(image_dir, img['file_name']) for img in annotations['images']]
+    all_image_files = [os.path.join(image_dir, img['file_name']) for img in annotations['images']]
 
-    # random_image_files = random.sample(all_image_files, 4)
+    random_image_files = random.sample(all_image_files, 4)
 
-    # display_type = 'seg'
-    # display_images_with_coco_annotations(random_image_files, annotations, display_type)
+    display_type = 'seg'
+    display_images_with_coco_annotations(random_image_files, annotations, display_type)
 
 
     """creating new test directory with corresponding masks"""
-    # original_image_dir = 'dataset/test'
+    original_image_dir = 'dataset/test'
 
-    # json_file = 'dataset/test/_annotations.coco.json'
+    json_file = 'dataset/test/_annotations.coco.json'
 
-    # mask_output_folder = 'test2/masks'
+    mask_output_folder = 'test2/masks'
 
-    # image_output_folder = 'test2/images'
+    image_output_folder = 'test2/images'
 
-    # create_files(json_file, mask_output_folder, image_output_folder, original_image_dir)
+    create_files(json_file, mask_output_folder, image_output_folder, original_image_dir)
 
 
 
     """ creating new training directory with corresponding masks"""
-    # original_image_dir = 'dataset/train'
+    original_image_dir = 'dataset/train'
 
-    # json_file = 'dataset/train/_annotations.coco.json'
+    json_file = 'dataset/train/_annotations.coco.json'
 
-    # mask_output_folder = 'train2/masks'
+    mask_output_folder = 'train2/masks'
 
-    # image_output_folder = 'train2/images'
+    image_output_folder = 'train2/images'
 
-    # create_files(json_file, mask_output_folder, image_output_folder, original_image_dir)
+    create_files(json_file, mask_output_folder, image_output_folder, original_image_dir)
 
 
 
     """creating new validation directory with corresponding masks"""
-    # original_image_dir = 'dataset/valid'
+    original_image_dir = 'dataset/valid'
 
-    # json_file = 'dataset/valid/_annotations.coco.json'
+    json_file = 'dataset/valid/_annotations.coco.json'
 
-    # mask_output_folder = 'valid2/masks'
+    mask_output_folder = 'valid2/masks'
 
-    # image_output_folder = 'valid2/images'
+    image_output_folder = 'valid2/images'
 
-    # create_files(json_file, mask_output_folder, image_output_folder, original_image_dir)
+    create_files(json_file, mask_output_folder, image_output_folder, original_image_dir)
 
     """ removing the image with no corresponding mask"""
     folder1_path = 'train2/images'
@@ -584,6 +584,8 @@ def main():
 
     epochs = 10
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
+    print("\nStarting Model Training...\n")
 
     results = Train(model.to(device), train_dataloader=train_loader, val_dataloader=valid_loader, loss_fn=loss_fn, optimizer=optimizer, early_stopping=early_stopping, device=device, epochs=epochs)
 
