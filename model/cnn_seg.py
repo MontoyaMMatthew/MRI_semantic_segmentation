@@ -57,8 +57,89 @@ def main(coco, ds_root):
         create_mask(image=img, img_annotations=annotations, out_dir=imgs_out)
         print("creating mask")
 
-    # UNET MODEL
-    model = nn.Sequential()
+    # Module channels
+    module_in = 1  # gray scale images
+    module_out = 1  # binary segmentation
+
+    # shape of data (batchsize,)
+
+
+class UNET(nn.Module):
+    def __init__(self, in_channels, out_channels):
+        super().__init__()
+        # The following convolutions will be structured to follow the UNET Model Architecture
+        # Three contracting blocks
+        # self.conv1 =
+        # self.conv2 =
+        # self.conv3 =
+
+        # Three expanding blocks
+        # self.upconv3 =
+        # self.upconv2 =
+        # self.upconv1 =
+
+    def __call__(self, x):
+        pass
+
+    def contract_block(in_channels, out_channels, kernel_size, padding):
+        """
+        This block downsizes the image resolution via pooling, and extracts features through its convolutions.
+        A contract block consists of:
+            2 convolution layers, each of which are normalized and activated by the reLu function
+            1 pooling layer
+        """
+        contract = nn.Sequential(
+            torch.nn.Conv2d(
+                in_channels,
+                out_channels,
+                kernel_size=kernel_size,
+                stride=1,
+                padding=padding,
+            ),
+            torch.nn.BatchNorm2d(out_channels),
+            torch.nn.ReLU(),
+            torch.nn.Conv2d(
+                out_channels,
+                out_channels,
+                kernel_size=kernel_size,
+                stride=1,
+                padding=padding,
+            ),
+            torch.nn.BatchNorm2d(out_channels),
+            torch.nn.ReLU(),
+            torch.nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
+        )
+
+        return contract
+
+    def expand_block(self, in_channels, out_channels, kernel_size, padding):
+        """
+        This block upscales the image to increase resolution.
+        This block consists of:
+            2 convolutions which are normalized and activated with reLu
+            1 transpose layer (broadcasting to larger pixel resolution)
+        """
+        expand = nn.Sequential(
+            torch.nn.Conv2d(
+                in_channels, out_channels, kernel_size, stride=1, padding=padding
+            ),
+            torch.nn.BatchNorm2d(out_channels),
+            torch.nn.ReLU(),
+            torch.nn.Conv2d(
+                out_channels, out_channels, kernel_size, stride=1, padding=padding
+            ),
+            torch.nn.BatchNorm2d(out_channels),
+            torch.nn.ReLU(),
+            torch.nn.ConvTranspose2d(
+                out_channels,
+                out_channels,
+                kernel_size=3,
+                stride=2,
+                padding=1,
+                output_padding=1,
+            ),
+        )
+        return expand
 
 
 if __name__ == "__main__":
