@@ -270,49 +270,6 @@ image_transform = transforms.Compose([
 ])
 
 
-# x, y = next (iter(train_loader))
-# #print(x.shape, y.shape, type(x), type(y))
-
-
-# import torch
-
-# num_ones = torch.eq(x, 1).sum().item()
-# num_zeros = x.numel() - num_ones
-
-# # print(f"Number of ones in x: {num_ones}")
-# # print(f"Number of zeroes in x: {num_zeros}")
-
-
-# num_ones = torch.eq(y, 1).sum().item()
-# num_zeros = y.numel() - num_ones
-
-# # print(f"Number of ones in y: {num_ones}")
-# # print(f"Number of zeroes in y: {num_zeros}")
-
-# # convert tensors to numpy arrays and squeeze channel dimension
-# x_np = x.numpy().squeeze(1)
-# y_np = y.numpy().squeeze(1)
-
-# # shows a few images with corresponding mask
-# plt.figure(figsize=(10, 5))
-
-# for i in range(4):
-#     plt.subplot(2, 4, i + 1)
-#     plt.imshow(x_np[i], cmap='gray')
-#     plt.title('Original Image')
-#     plt.axis('off')
-
-
-# for i in range(4):
-#     plt.subplot(2, 4, i + 5)
-#     plt.imshow(y_np[i], cmap='gray')
-#     plt.title('Mask')
-#     plt.axis('off')
-
-# plt.tight_layout()
-# plt.show()
-
-
 C = 1  # number input channels
 n_filters = 32 
 
