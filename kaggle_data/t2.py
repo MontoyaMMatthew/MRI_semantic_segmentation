@@ -8,6 +8,8 @@
     
     stage 4
 
+    if computer has all the dependencies below, to run in terminal: python t2.py 
+
 """
 from pycocotools.coco import COCO
 import matplotlib.pyplot as plt
